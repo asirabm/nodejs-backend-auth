@@ -1,0 +1,17 @@
+POST http://localhost:4000/register 
+Content-Type: application/json
+
+{
+    "email":"asir1.abm@gmail.com",
+    "password":"abm"
+}
+
+###
+
+POST http://localhost:4000/login 
+Content-Type: application/json
+
+{
+    "email":"asir1.abm@gmail.com",
+    "password":"abm"
+}
