@@ -7,6 +7,7 @@ const db_connect=require('./db/dbConnect')
 const User = require("./db/userModel");
 const userModel = require('./db/userModel');
 const bodyParser = require('body-parser')
+const auth = require("./auth");
 
 
 
@@ -94,6 +95,19 @@ app.post('/login',(req,res)=>{
         })
     })
 })
+
+
+
+// free endpoint
+app.get("/free-endpoint", (request, response) => {
+    response.json({ message: "You are free to access me anytime" });
+  });
+  
+  // authentication endpoint
+  app.get("/auth-endpoint",auth, (request, response) => {
+    response.json({ message: "You are authorized to access me" });
+  });
+
 
 
 
