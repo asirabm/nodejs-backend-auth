@@ -105,6 +105,7 @@ app.get("/free-endpoint", (request, response) => {
   
   // authentication endpoint
   app.get("/auth-endpoint",auth, (request, response) => {
+    console.log(request.user)
     response.json({ message: "You are authorized to access me" });
   });
 
