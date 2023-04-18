@@ -8,9 +8,10 @@ const User = require("./db/userModel");
 const userModel = require('./db/userModel');
 const bodyParser = require('body-parser')
 const auth = require("./auth");
+const cors=require('cors')
 
 
-
+app.use(cors())
 console.log(process.env.SECRET_KEY)
 db_connect()
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -51,12 +52,12 @@ app.post('/login',(req,res)=>{
     userModel.findOne({
         email:req.body.email
     }).then(user=>{
-        console.log(user)
+        console.log(req.body.password)
         bcrypt.compare(req.body.password,user.password)
         .then((pwcheck)=>{
-           
+            console.log(pwcheck)
             if(!pwcheck){
-               // console.log('ksjndjklv')
+                console.log('ksjndjklv')
                 return res.status(400).send({
                     message: "Passwords does not match"
                   });
